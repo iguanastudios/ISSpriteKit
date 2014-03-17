@@ -18,6 +18,7 @@
 		A00246C518D7BE0300E0BE78 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A00246C418D7BE0300E0BE78 /* ViewController.m */; };
 		A00246C818D7BE0300E0BE78 /* MyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = A00246C718D7BE0300E0BE78 /* MyScene.m */; };
 		A00246CC18D7BE0300E0BE78 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A00246CB18D7BE0300E0BE78 /* Images.xcassets */; };
+		A00246EB18D7C05D00E0BE78 /* ISParallaxNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A00246EA18D7C05D00E0BE78 /* ISParallaxNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,8 @@
 		A00246C718D7BE0300E0BE78 /* MyScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyScene.m; sourceTree = "<group>"; };
 		A00246CB18D7BE0300E0BE78 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A00246D218D7BE0300E0BE78 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		A00246E918D7C05D00E0BE78 /* ISParallaxNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISParallaxNode.h; sourceTree = "<group>"; };
+		A00246EA18D7C05D00E0BE78 /* ISParallaxNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISParallaxNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +62,7 @@
 		A00246A018D7BE0300E0BE78 = {
 			isa = PBXGroup;
 			children = (
+				A00246E818D7BFDF00E0BE78 /* ISSpriteKit */,
 				A00246B418D7BE0300E0BE78 /* Example */,
 				A00246AB18D7BE0300E0BE78 /* Frameworks */,
 				A00246AA18D7BE0300E0BE78 /* Products */,
@@ -110,6 +114,15 @@
 				A00246BC18D7BE0300E0BE78 /* Example-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A00246E818D7BFDF00E0BE78 /* ISSpriteKit */ = {
+			isa = PBXGroup;
+			children = (
+				A00246E918D7C05D00E0BE78 /* ISParallaxNode.h */,
+				A00246EA18D7C05D00E0BE78 /* ISParallaxNode.m */,
+			);
+			path = ISSpriteKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +194,7 @@
 				A00246C518D7BE0300E0BE78 /* ViewController.m in Sources */,
 				A00246BF18D7BE0300E0BE78 /* AppDelegate.m in Sources */,
 				A00246BB18D7BE0300E0BE78 /* main.m in Sources */,
+				A00246EB18D7C05D00E0BE78 /* ISParallaxNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
