@@ -41,6 +41,8 @@
             case ISScrollDirectionDown:
                 break;
             case ISScrollDirectionRight:
+                self.firstBackground.position = CGPointMake(0, 0);
+                self.secondBackground.position = CGPointMake(-self.secondBackground.size.width, 0);
                 break;
             default:
                 self.firstBackground.position = CGPointMake(0, 0);
@@ -63,41 +65,50 @@
 
     self.lastUpdateTime = currentTime;
 
+    CGPoint backgroundVelocity = CGPointMake(-self.pointPerSecond, 0);
+    CGPoint amountToMove = CGPointMultiplyScalar(backgroundVelocity, self.deltaTime);
+
     switch (self.direction) {
         case ISScrollDirectionUp:
-            [self scrollUp];
+            [self scrollUp:amountToMove];
             break;
         case ISScrollDirectionDown:
-            [self scrollDown];
+            [self scrollDown:amountToMove];
             break;
         case ISScrollDirectionRight:
-            [self scrollRight];
+            [self scrollRight:amountToMove];
             break;
         default:
-            [self scrollLeft];
+            [self scrollLeft:amountToMove];
             break;
     }
 }
 
 #pragma mark - Private methods
 
-- (void)scrollUp {
+- (void)scrollUp:(CGPoint)amountToMove {
 
 }
 
-- (void)scrollDown {
+- (void)scrollDown:(CGPoint)amountToMove {
 
 }
 
-- (void)scrollRight {
-
+- (void)scrollRight:(CGPoint)amountToMove {
+    self.position = CGPointSubstract(self.position, amountToMove);
+    [self checkRightPosition:self.firstBackground];
+    [self checkRightPosition:self.secondBackground];
 }
 
-- (void)scrollLeft {
-    CGPoint backgroundVelocity = CGPointMake(-self.pointPerSecond, 0);
-    CGPoint amountToMove = CGPointMultiplyScalar(backgroundVelocity, self.deltaTime);
+- (void)checkRightPosition:(SKSpriteNode *)node {
+    CGPoint screenPosition = [self convertPoint:node.position toNode:self.scene];
+    if (screenPosition.x >= node.size.width) {
+        node.position = CGPointMake(node.position.x - node.size.width * 2, node.position.y);
+    }
+}
+
+- (void)scrollLeft:(CGPoint)amountToMove {
     self.position = CGPointAdd(self.position, amountToMove);
-
     [self checkLeftPosition:self.firstBackground];
     [self checkLeftPosition:self.secondBackground];
 }

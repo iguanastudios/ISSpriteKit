@@ -22,6 +22,10 @@ INLINE CGPoint CGPointAdd(CGPoint point1, CGPoint point2) {
     return CGPointMake(point1.x + point2.x, point1.y + point2.y);
 }
 
+INLINE CGPoint CGPointSubstract(CGPoint point1, CGPoint point2) {
+    return CGPointMake(point1.x - point2.x, point1.y - point2.y);
+}
+
 INLINE CGPoint CGPointMultiplyScalar(CGPoint point, CGFloat value) {
     return CGPointFromGLKVector2(GLKVector2MultiplyScalar(GLKVector2FromCGPoint(point), value));
 }
