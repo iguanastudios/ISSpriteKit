@@ -7,7 +7,21 @@
 //
 
 #import "MyScene.h"
+#import "ISParallaxNode.h"
+#import "ISUtils.h"
 
-@implementation MyScene
+@implementation MyScene {
+    ISParallaxNode *_parallaxNode;
+}
+
+- (id)initWithSize:(CGSize)size {
+    if (self = [super initWithSize:size]) {
+        _parallaxNode = [[ISParallaxNode alloc] initWithImageNamed:@"Horizontal1" direction:ISScrollDirectionLeft speedFactor:3.1];
+        [self addChild: _parallaxNode];
+        self.backgroundColor = [UIColor whiteColor];
+    }
+
+    return self;
+}
 
 @end
