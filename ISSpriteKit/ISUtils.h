@@ -8,7 +8,7 @@
 
 #import <GLKit/GLKMath.h>
 
-#define INLINE      static __inline__
+#define INLINE  static __inline__
 
 INLINE CGPoint CGPointFromGLKVector2(GLKVector2 vector) {
     return CGPointMake(vector.x, vector.y);

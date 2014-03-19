@@ -19,10 +19,10 @@
 
 - (id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
-        self.parallaxNode1 = [[ISParallaxNode alloc] initWithImageNamed:@"Horizontal1" direction:ISScrollDirectionLeft];
+        self.parallaxNode1 = [[ISParallaxNode alloc] initWithImageNamed:@"Horizontal" direction:ISScrollDirectionLeft];
         [self addChild: self.parallaxNode1];
 
-        self.parallaxNode2 = [[ISParallaxNode alloc] initWithImageNamed:@"Horizontal1" direction:ISScrollDirectionRight];
+        self.parallaxNode2 = [[ISParallaxNode alloc] initWithImageNamed:@"Horizontal" direction:ISScrollDirectionRight];
         self.parallaxNode2.pointPerSecond = 200;
         self.parallaxNode2.position = CGPointMake(0, 100);
         [self addChild: self.parallaxNode2];
