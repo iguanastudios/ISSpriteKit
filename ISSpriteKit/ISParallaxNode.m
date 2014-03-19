@@ -9,7 +9,6 @@
 #import "ISParallaxNode.h"
 
 @interface ISParallaxNode ()
-@property (strong, nonatomic) NSString *image;
 @property (assign, nonatomic) ISScrollDirection direction;
 @property (assign, nonatomic) CGFloat speedFactor;
 @property (strong, nonatomic) SKSpriteNode *firstScrollNode;
@@ -24,14 +23,13 @@
 - (instancetype)initWithImageNamed:(NSString *)image direction:(ISScrollDirection)direction speedFactor:(CGFloat)speedFactor {
     if (self = [super init]) {
         self.position = CGPointMake(0, 0);
-        self.image = image;
         self.direction = direction;
         self.speedFactor = MAX(speedFactor, 1.0);
 
-        self.firstScrollNode = [SKSpriteNode spriteNodeWithImageNamed:self.image];
+        self.firstScrollNode = [SKSpriteNode spriteNodeWithImageNamed:image];
         self.firstScrollNode.anchorPoint = CGPointZero;
 
-        self.secondScrollNode = [SKSpriteNode spriteNodeWithImageNamed:self.image];
+        self.secondScrollNode = [SKSpriteNode spriteNodeWithImageNamed:image];
         self.secondScrollNode.anchorPoint = CGPointZero;
 
         self.nodeSize = self.firstScrollNode.size;
@@ -46,10 +44,8 @@
             case ISScrollDirectionRight:
                 [self scrollRight];
                 break;
-            case ISScrollDirectionLeft:
-                [self scrollLeft];
-                break;
             default:
+                [self scrollLeft];
                 break;
         }
     }
