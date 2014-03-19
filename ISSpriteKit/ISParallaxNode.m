@@ -37,8 +37,12 @@
 
         switch (self.direction) {
             case ISScrollDirectionUp:
+                self.firstBackground.position = CGPointMake(0, 0);
+                self.secondBackground.position = CGPointMake(0, -self.secondBackground.size.height);
                 break;
             case ISScrollDirectionDown:
+                self.firstBackground.position = CGPointMake(0, 0);
+                self.secondBackground.position = CGPointMake(0, self.secondBackground.size.height);
                 break;
             case ISScrollDirectionRight:
                 self.firstBackground.position = CGPointMake(0, 0);
@@ -87,11 +91,31 @@
 #pragma mark - Private methods
 
 - (void)scrollUp:(CGPoint)amountToMove {
+    amountToMove = CGPointMake(amountToMove.y, amountToMove.x);
+    self.position = CGPointSubstract(self.position, amountToMove);
+    [self checkUpPosition:self.firstBackground];
+    [self checkUpPosition:self.secondBackground];
+}
 
+- (void)checkUpPosition:(SKSpriteNode *)node {
+    CGPoint screenPosition = [self convertPoint:node.position toNode:self.scene];
+    if (screenPosition.y >= node.size.height) {
+        node.position = CGPointMake(node.position.x, node.position.y - node.size.height * 2);
+    }
 }
 
 - (void)scrollDown:(CGPoint)amountToMove {
+    amountToMove = CGPointMake(amountToMove.y, amountToMove.x);
+    self.position = CGPointAdd(self.position, amountToMove);
+    [self checkDownPosition:self.firstBackground];
+    [self checkDownPosition:self.secondBackground];
+}
 
+- (void)checkDownPosition:(SKSpriteNode *)node {
+    CGPoint screenPosition = [self convertPoint:node.position toNode:self.scene];
+    if (screenPosition.y <= -node.size.height) {
+        node.position = CGPointMake(node.position.x, node.position.y + node.size.height * 2);
+    }
 }
 
 - (void)scrollRight:(CGPoint)amountToMove {

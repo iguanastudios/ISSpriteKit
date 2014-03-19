@@ -11,29 +11,44 @@
 #import "ISUtils.h"
 
 @interface MyScene ()
-@property (strong, nonatomic) ISParallaxNode *parallaxNode1;
-@property (strong, nonatomic) ISParallaxNode *parallaxNode2;
+@property (strong, nonatomic) ISParallaxNode *parallaxNodeUp;
+@property (strong, nonatomic) ISParallaxNode *parallaxNodeDown;
+@property (strong, nonatomic) ISParallaxNode *parallaxNodeRight;
+@property (strong, nonatomic) ISParallaxNode *parallaxNodeLeft;
 @end
 
 @implementation MyScene
 
 - (id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
-        self.parallaxNode1 = [[ISParallaxNode alloc] initWithImageNamed:@"Horizontal" direction:ISScrollDirectionLeft];
-        [self addChild: self.parallaxNode1];
+        self.backgroundColor = [UIColor whiteColor];
 
-        self.parallaxNode2 = [[ISParallaxNode alloc] initWithImageNamed:@"Horizontal" direction:ISScrollDirectionRight];
-        self.parallaxNode2.pointPerSecond = 200;
-        self.parallaxNode2.position = CGPointMake(0, 100);
-        [self addChild: self.parallaxNode2];
+        self.parallaxNodeUp = [[ISParallaxNode alloc] initWithImageNamed:@"Vertical" direction:ISScrollDirectionUp];
+        self.parallaxNodeUp.zPosition = 1;
+        [self addChild: self.parallaxNodeUp];
+
+        self.parallaxNodeDown = [[ISParallaxNode alloc] initWithImageNamed:@"Vertical" direction:ISScrollDirectionDown];
+        self.parallaxNodeDown.pointPerSecond = 150;
+        self.parallaxNodeDown.position = CGPointMake(160, 0);
+        [self addChild: self.parallaxNodeDown];
+
+        self.parallaxNodeRight = [[ISParallaxNode alloc] initWithImageNamed:@"Horizontal" direction:ISScrollDirectionRight];
+        [self addChild: self.parallaxNodeRight];
+
+        self.parallaxNodeLeft = [[ISParallaxNode alloc] initWithImageNamed:@"Horizontal" direction:ISScrollDirectionLeft];
+        self.parallaxNodeLeft.position = CGPointMake(0, self.frame.size.height / 2);
+        self.parallaxNodeLeft.pointPerSecond = 150;
+        [self addChild: self.parallaxNodeLeft];
     }
 
     return self;
 }
 
 - (void)update:(NSTimeInterval)currentTime {
-    [self.parallaxNode1 update:currentTime];
-    [self.parallaxNode2 update:currentTime];
+    [self.parallaxNodeUp update:currentTime];
+    [self.parallaxNodeDown update:currentTime];
+    [self.parallaxNodeRight update:currentTime];
+    [self.parallaxNodeLeft update:currentTime];
 }
 
 @end
