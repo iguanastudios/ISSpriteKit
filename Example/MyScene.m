@@ -10,18 +10,31 @@
 #import "ISParallaxNode.h"
 #import "ISUtils.h"
 
-@implementation MyScene {
-    ISParallaxNode *_parallaxNode;
-}
+@interface MyScene ()
+@property (strong, nonatomic) ISParallaxNode *parallaxNode1;
+@property (strong, nonatomic) ISParallaxNode *parallaxNode2;
+@end
+
+@implementation MyScene
 
 - (id)initWithSize:(CGSize)size {
     if (self = [super initWithSize:size]) {
-        _parallaxNode = [[ISParallaxNode alloc] initWithImageNamed:@"Horizontal1" direction:ISScrollDirectionLeft speedFactor:3.1];
-        [self addChild: _parallaxNode];
-        self.backgroundColor = [UIColor whiteColor];
+        self.parallaxNode1 = [[ISParallaxNode alloc] initWithImageNamed:@"Horizontal1" direction:ISScrollDirectionLeft];
+        self.parallaxNode1.pointPerSecond = 100;
+        [self addChild: self.parallaxNode1];
+
+        self.parallaxNode2 = [[ISParallaxNode alloc] initWithImageNamed:@"Horizontal1" direction:ISScrollDirectionLeft];
+        self.parallaxNode2.pointPerSecond = 200;
+        self.parallaxNode2.position = CGPointMake(0, 200);
+        [self addChild: self.parallaxNode2];
     }
 
     return self;
+}
+
+- (void)update:(NSTimeInterval)currentTime {
+    [self.parallaxNode1 update:currentTime];
+    [self.parallaxNode2 update:currentTime];
 }
 
 @end

@@ -7,50 +7,76 @@
 //
 
 #import "ISParallaxNode.h"
+#import "ISUtils.h"
 
 @interface ISParallaxNode ()
 @property (assign, nonatomic) ISScrollDirection direction;
-@property (assign, nonatomic) CGFloat speedFactor;
-@property (strong, nonatomic) SKSpriteNode *firstScrollNode;
-@property (strong, nonatomic) SKSpriteNode *secondScrollNode;
-@property (assign, nonatomic) CGSize nodeSize;
+@property (assign, nonatomic) NSTimeInterval lastUpdateTime;
+@property (assign, nonatomic) NSTimeInterval deltaTime;
+@property (strong, nonatomic) SKSpriteNode *firstBackground;
+@property (strong, nonatomic) SKSpriteNode *secondBackground;
 @end
 
 @implementation ISParallaxNode
 
 #pragma mark - Initialization
 
-- (instancetype)initWithImageNamed:(NSString *)image direction:(ISScrollDirection)direction speedFactor:(CGFloat)speedFactor {
+- (instancetype)initWithImageNamed:(NSString *)image direction:(ISScrollDirection)direction {
     if (self = [super init]) {
         self.position = CGPointMake(0, 0);
         self.direction = direction;
-        self.speedFactor = MAX(speedFactor, 1.0);
+        self.pointPerSecond = 100.0;
 
-        self.firstScrollNode = [SKSpriteNode spriteNodeWithImageNamed:image];
-        self.firstScrollNode.anchorPoint = CGPointZero;
+        self.firstBackground = [SKSpriteNode spriteNodeWithImageNamed:image];
+        self.firstBackground.anchorPoint = CGPointZero;
+        [self addChild:self.firstBackground];
 
-        self.secondScrollNode = [SKSpriteNode spriteNodeWithImageNamed:image];
-        self.secondScrollNode.anchorPoint = CGPointZero;
+        self.secondBackground = [SKSpriteNode spriteNodeWithImageNamed:image];
+        self.secondBackground.anchorPoint = CGPointZero;
+        [self addChild:self.secondBackground];
 
-        self.nodeSize = self.firstScrollNode.size;
-
-        switch (direction) {
+        switch (self.direction) {
             case ISScrollDirectionUp:
-                [self scrollUp];
                 break;
             case ISScrollDirectionDown:
-                [self scrollDown];
                 break;
             case ISScrollDirectionRight:
-                [self scrollRight];
                 break;
             default:
-                [self scrollLeft];
+                self.firstBackground.position = CGPointMake(0, 0);
+                self.secondBackground.position = CGPointMake(self.secondBackground.size.width, 0);
                 break;
         }
     }
     
     return self;
+}
+
+#pragma mark - Public methods
+
+- (void)update:(NSTimeInterval)currentTime {
+    if (self.lastUpdateTime) {
+        self.deltaTime = currentTime - self.lastUpdateTime;
+    } else {
+        self.deltaTime = 0;
+    }
+
+    self.lastUpdateTime = currentTime;
+
+    switch (self.direction) {
+        case ISScrollDirectionUp:
+            [self scrollUp];
+            break;
+        case ISScrollDirectionDown:
+            [self scrollDown];
+            break;
+        case ISScrollDirectionRight:
+            [self scrollRight];
+            break;
+        default:
+            [self scrollLeft];
+            break;
+    }
 }
 
 #pragma mark - Private methods
@@ -68,31 +94,19 @@
 }
 
 - (void)scrollLeft {
-    self.firstScrollNode.position = CGPointMake(0, 0);
-    self.secondScrollNode.position = CGPointMake(self.nodeSize.width, 0);
+    CGPoint backgroundVelocity = CGPointMake(-self.pointPerSecond, 0);
+    CGPoint amountToMove = CGPointMultiplyScalar(backgroundVelocity, self.deltaTime);
+    self.position = CGPointAdd(self.position, amountToMove);
 
-    SKAction *scrollNodeBefore = [SKAction moveToX:-self.nodeSize.width
-                                          duration:self.speedFactor];
-    SKAction *scrollNodeCenter = [SKAction moveToX:self.secondScrollNode.frame.origin.x - self.nodeSize.width
-                                          duration:self.speedFactor];
+    [self checkLeftPosition:self.firstBackground];
+    [self checkLeftPosition:self.secondBackground];
+}
 
-    SKAction *moveFirstNode = [SKAction runBlock:^{
-        self.firstScrollNode.position = CGPointMake(self.nodeSize.width,
-                                                    self.firstScrollNode.frame.origin.y);
-    }];
-    SKAction *moveSecondNode = [SKAction runBlock:^{
-        self.secondScrollNode.position = CGPointMake(self.nodeSize.width,
-                                                     self.secondScrollNode.frame.origin.y);
-    }];
-
-    SKAction *firstNodeSequence = [SKAction sequence:@[scrollNodeBefore, moveFirstNode, scrollNodeCenter]];
-    SKAction *secondNodeSequence = [SKAction sequence:@[scrollNodeCenter, scrollNodeBefore, moveSecondNode]];
-
-    [self.firstScrollNode runAction: [SKAction repeatActionForever:firstNodeSequence]];
-    [self.secondScrollNode runAction: [SKAction repeatActionForever:secondNodeSequence]];
-
-    [self addChild: self.firstScrollNode];
-    [self addChild: self.secondScrollNode];
+- (void)checkLeftPosition:(SKSpriteNode *)node {
+    CGPoint screenPosition = [self convertPoint:node.position toNode:self.scene];
+    if (screenPosition.x <= -node.size.width) {
+        node.position = CGPointMake(node.position.x + node.size.width * 2, node.position.y);
+    }
 }
 
 @end

@@ -18,6 +18,11 @@ typedef NS_ENUM(NSUInteger, ISScrollDirection) {
 
 @interface ISParallaxNode : SKNode
 
-- (instancetype)initWithImageNamed:(NSString *)image direction:(ISScrollDirection)direction speedFactor:(CGFloat)speed;
+// Move points per second.
+// Defaults to 100
+@property (assign, nonatomic) CGFloat pointPerSecond;
+
+- (instancetype)initWithImageNamed:(NSString *)image direction:(ISScrollDirection)direction;
+- (void)update:(NSTimeInterval)currentTime;
 
 @end
