@@ -40,6 +40,8 @@ Highly customizable node that simulates a parallax scroller.
 - (void)update:(NSTimeInterval)currentTime {
     [self.parallaxNode update:currentTime];
 }
+
+@end
 ```
 
 ## Licence
