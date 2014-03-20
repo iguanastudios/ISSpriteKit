@@ -17,3 +17,31 @@ Highly customizable node that simulates a parallax scroller.
 - Velocity control (Points per second).
 
 ### Usage
+
+```
+#import "MyScene.h"
+#import "ISParallaxNode.h"
+
+@interface MyScene ()
+@property (strong, nonatomic) ISParallaxNode *parallaxNode;
+@end
+
+@implementation MyScene
+
+- (id)initWithSize:(CGSize)size {
+    if (self = [super initWithSize:size]) {
+        self.parallaxNode = [[ISParallaxNode alloc] initWithImageNamed:@"Horizontal" direction:ISScrollDirectionLeft];
+        [self addChild: self.parallaxNode];
+    }
+
+    return self;
+}
+
+- (void)update:(NSTimeInterval)currentTime {
+    [self.parallaxNode update:currentTime];
+}
+```
+
+## Licence
+
+ISSpriteKit is licensed under the [MIT Licence](LICENSE).
