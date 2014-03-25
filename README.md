@@ -50,7 +50,7 @@ Highly customizable node that simulates a parallax scroller.
 
 ### ISParallaxLayer
 
-ISParallaxLayer can contains several ISParallaxNodes.
+ISParallaxLayer can contain several ISParallaxNodes.
 
 #### Usage
 
