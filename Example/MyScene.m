@@ -9,11 +9,10 @@
 #import "MyScene.h"
 #import "ISParallaxLayer.h"
 #import "ISParallaxNode.h"
-#import "ISUtils.h"
 
 @interface MyScene ()
-@property (strong, nonatomic) ISParallaxNode *parallaxNodeUp;
-@property (strong, nonatomic) ISParallaxNode *parallaxNodeDown;
+@property (strong, nonatomic) ISParallaxNode *parallaxNodeUpDirection;
+@property (strong, nonatomic) ISParallaxNode *parallaxNodeDownDirection;
 @property (strong, nonatomic) ISParallaxLayer *parallaxLayer;
 @end
 
@@ -23,27 +22,29 @@
     if (self = [super initWithSize:size]) {
         self.backgroundColor = [UIColor whiteColor];
 
-        self.parallaxNodeUp = [[ISParallaxNode alloc] initWithImageNamed:@"Vertical" direction:ISScrollDirectionUp];
-        self.parallaxNodeUp.zPosition = 1;
-        [self addChild: self.parallaxNodeUp];
+        self.parallaxNodeUpDirection = [[ISParallaxNode alloc] initWithImageNamed:@"Vertical"
+                                                                        direction:ISScrollDirectionUp];
+        self.parallaxNodeUpDirection.zPosition = 1;
+        [self addChild: self.parallaxNodeUpDirection];
 
-        self.parallaxNodeDown = [[ISParallaxNode alloc] initWithImageNamed:@"Vertical" direction:ISScrollDirectionDown];
-        self.parallaxNodeDown.pointPerSecond = 150;
-        self.parallaxNodeDown.position = CGPointMake(160, 0);
-        [self addChild: self.parallaxNodeDown];
+        self.parallaxNodeDownDirection = [[ISParallaxNode alloc] initWithImageNamed:@"Vertical"
+                                                                          direction:ISScrollDirectionDown];
+        self.parallaxNodeDownDirection.pointPerSecond = 150;
+        self.parallaxNodeDownDirection.position = CGPointMake(160, 0);
+        [self addChild: self.parallaxNodeDownDirection];
 
         // ISParallaxLayer can contain several ISParallaxNode
         self.parallaxLayer = [ISParallaxLayer node];
 
-        ISParallaxNode *parallaxNodeRight = [[ISParallaxNode alloc] initWithImageNamed:@"Horizontal"
-                                                                             direction:ISScrollDirectionRight];
-        [self.parallaxLayer addParallaxNode:parallaxNodeRight];
+        ISParallaxNode *parallaxNodeRightDirection = [[ISParallaxNode alloc] initWithImageNamed:@"Horizontal"
+                                                                                      direction:ISScrollDirectionRight];
+        [self.parallaxLayer addParallaxNode:parallaxNodeRightDirection];
 
-        ISParallaxNode *parallaxNodeLeft = [[ISParallaxNode alloc] initWithImageNamed:@"Horizontal"
+        ISParallaxNode *parallaxNodeLeftDirection = [[ISParallaxNode alloc] initWithImageNamed:@"Horizontal"
                                                                             direction:ISScrollDirectionLeft];
-        parallaxNodeLeft.position = CGPointMake(0, self.frame.size.height / 2);
-        parallaxNodeLeft.pointPerSecond = 150;
-        [self.parallaxLayer addParallaxNode:parallaxNodeLeft];
+        parallaxNodeLeftDirection.position = CGPointMake(0, self.frame.size.height / 2);
+        parallaxNodeLeftDirection.pointPerSecond = 150;
+        [self.parallaxLayer addParallaxNode:parallaxNodeLeftDirection];
 
         [self addChild:self.parallaxLayer];
     }
@@ -52,8 +53,8 @@
 }
 
 - (void)update:(NSTimeInterval)currentTime {
-    [self.parallaxNodeUp update:currentTime];
-    [self.parallaxNodeDown update:currentTime];
+    [self.parallaxNodeUpDirection update:currentTime];
+    [self.parallaxNodeDownDirection update:currentTime];
     [self.parallaxLayer update:currentTime];
 }
 
