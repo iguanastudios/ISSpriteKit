@@ -1,5 +1,8 @@
-ISSpriteKit
+ISSpriteKit ![License MIT](https://go-shields.herokuapp.com/license-MIT-blue.png)
 ===========
+[![Badge w/ Version](https://cocoapod-badges.herokuapp.com/v/ISSpriteKit/badge.png)](http://cocoadocs.org/docsets/ISSpriteKit)
+[![Badge w/ Platform](https://cocoapod-badges.herokuapp.com/p/ISSpriteKit/badge.svg)](http://cocoadocs.org/docsets/ISSpriteKit)
+
 
 Sprite Kit helpers, extensions and utilities.
 
@@ -40,6 +43,8 @@ Highly customizable node that simulates a parallax scroller.
 - (void)update:(NSTimeInterval)currentTime {
     [self.parallaxNode update:currentTime];
 }
+
+@end
 ```
 
 ## Licence
