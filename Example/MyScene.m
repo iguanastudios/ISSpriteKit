@@ -7,14 +7,14 @@
 //
 
 #import "MyScene.h"
+#import "ISParallaxLayer.h"
 #import "ISParallaxNode.h"
 #import "ISUtils.h"
 
 @interface MyScene ()
 @property (strong, nonatomic) ISParallaxNode *parallaxNodeUp;
 @property (strong, nonatomic) ISParallaxNode *parallaxNodeDown;
-@property (strong, nonatomic) ISParallaxNode *parallaxNodeRight;
-@property (strong, nonatomic) ISParallaxNode *parallaxNodeLeft;
+@property (strong, nonatomic) ISParallaxLayer *parallaxLayer;
 @end
 
 @implementation MyScene
@@ -32,13 +32,20 @@
         self.parallaxNodeDown.position = CGPointMake(160, 0);
         [self addChild: self.parallaxNodeDown];
 
-        self.parallaxNodeRight = [[ISParallaxNode alloc] initWithImageNamed:@"Horizontal" direction:ISScrollDirectionRight];
-        [self addChild: self.parallaxNodeRight];
+        // ISParallaxLayer can contain several ISParallaxNode
+        self.parallaxLayer = [ISParallaxLayer node];
 
-        self.parallaxNodeLeft = [[ISParallaxNode alloc] initWithImageNamed:@"Horizontal" direction:ISScrollDirectionLeft];
-        self.parallaxNodeLeft.position = CGPointMake(0, self.frame.size.height / 2);
-        self.parallaxNodeLeft.pointPerSecond = 150;
-        [self addChild: self.parallaxNodeLeft];
+        ISParallaxNode *parallaxNodeRight = [[ISParallaxNode alloc] initWithImageNamed:@"Horizontal"
+                                                                             direction:ISScrollDirectionRight];
+        [self.parallaxLayer addParallaxNode:parallaxNodeRight];
+
+        ISParallaxNode *parallaxNodeLeft = [[ISParallaxNode alloc] initWithImageNamed:@"Horizontal"
+                                                                            direction:ISScrollDirectionLeft];
+        parallaxNodeLeft.position = CGPointMake(0, self.frame.size.height / 2);
+        parallaxNodeLeft.pointPerSecond = 150;
+        [self.parallaxLayer addParallaxNode:parallaxNodeLeft];
+
+        [self addChild:self.parallaxLayer];
     }
 
     return self;
@@ -47,8 +54,7 @@
 - (void)update:(NSTimeInterval)currentTime {
     [self.parallaxNodeUp update:currentTime];
     [self.parallaxNodeDown update:currentTime];
-    [self.parallaxNodeRight update:currentTime];
-    [self.parallaxNodeLeft update:currentTime];
+    [self.parallaxLayer update:currentTime];
 }
 
 @end
