@@ -46,6 +46,7 @@
 		A00246EA18D7C05D00E0BE78 /* ISParallaxNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISParallaxNode.m; sourceTree = "<group>"; };
 		A00246FD18D99B2100E0BE78 /* ISUtils.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ISUtils.mm; sourceTree = "<group>"; };
 		A00246FE18D99B2100E0BE78 /* ISUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISUtils.h; sourceTree = "<group>"; };
+		A0545BD718E317E700F93980 /* ISSpriteKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISSpriteKit.h; sourceTree = "<group>"; };
 		A05A093818E108180062C06E /* ISParallaxLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISParallaxLayer.h; sourceTree = "<group>"; };
 		A05A093918E108180062C06E /* ISParallaxLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISParallaxLayer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,6 +126,7 @@
 		A00246E818D7BFDF00E0BE78 /* ISSpriteKit */ = {
 			isa = PBXGroup;
 			children = (
+				A0545BD718E317E700F93980 /* ISSpriteKit.h */,
 				A05A093818E108180062C06E /* ISParallaxLayer.h */,
 				A05A093918E108180062C06E /* ISParallaxLayer.m */,
 				A00246E918D7C05D00E0BE78 /* ISParallaxNode.h */,
