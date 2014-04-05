@@ -9,8 +9,11 @@
 #ifndef _ISSpriteKit_
 #define _ISSpriteKit_
 
+#import "ISActions.h"
+#import "ISAudio.h"
 #import "ISParallaxNode.h"
 #import "ISParallaxLayer.h"
+#import "ISUtilities.h"
 #import "ISUtils.h"
 
 #endif
