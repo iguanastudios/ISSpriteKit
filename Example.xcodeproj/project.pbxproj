@@ -21,6 +21,8 @@
 		A00246EB18D7C05D00E0BE78 /* ISParallaxNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A00246EA18D7C05D00E0BE78 /* ISParallaxNode.m */; };
 		A00246FF18D99B2100E0BE78 /* ISUtils.mm in Sources */ = {isa = PBXBuildFile; fileRef = A00246FD18D99B2100E0BE78 /* ISUtils.mm */; };
 		A05A093A18E108180062C06E /* ISParallaxLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = A05A093918E108180062C06E /* ISParallaxLayer.m */; };
+		A092F40718EF802D000A4DCF /* ISActions.m in Sources */ = {isa = PBXBuildFile; fileRef = A092F40618EF802D000A4DCF /* ISActions.m */; };
+		A092F40A18EF8156000A4DCF /* ISAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = A092F40918EF8156000A4DCF /* ISAudio.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,10 @@
 		A0545BD718E317E700F93980 /* ISSpriteKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISSpriteKit.h; sourceTree = "<group>"; };
 		A05A093818E108180062C06E /* ISParallaxLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISParallaxLayer.h; sourceTree = "<group>"; };
 		A05A093918E108180062C06E /* ISParallaxLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISParallaxLayer.m; sourceTree = "<group>"; };
+		A092F40518EF802D000A4DCF /* ISActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISActions.h; sourceTree = "<group>"; };
+		A092F40618EF802D000A4DCF /* ISActions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISActions.m; sourceTree = "<group>"; };
+		A092F40818EF8156000A4DCF /* ISAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISAudio.h; sourceTree = "<group>"; };
+		A092F40918EF8156000A4DCF /* ISAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISAudio.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,11 +132,15 @@
 		A00246E818D7BFDF00E0BE78 /* ISSpriteKit */ = {
 			isa = PBXGroup;
 			children = (
-				A0545BD718E317E700F93980 /* ISSpriteKit.h */,
+				A092F40518EF802D000A4DCF /* ISActions.h */,
+				A092F40618EF802D000A4DCF /* ISActions.m */,
+				A092F40818EF8156000A4DCF /* ISAudio.h */,
+				A092F40918EF8156000A4DCF /* ISAudio.m */,
 				A05A093818E108180062C06E /* ISParallaxLayer.h */,
 				A05A093918E108180062C06E /* ISParallaxLayer.m */,
 				A00246E918D7C05D00E0BE78 /* ISParallaxNode.h */,
 				A00246EA18D7C05D00E0BE78 /* ISParallaxNode.m */,
+				A0545BD718E317E700F93980 /* ISSpriteKit.h */,
 				A00246FD18D99B2100E0BE78 /* ISUtils.mm */,
 				A00246FE18D99B2100E0BE78 /* ISUtils.h */,
 			);
@@ -205,6 +215,8 @@
 				A00246C818D7BE0300E0BE78 /* MyScene.m in Sources */,
 				A05A093A18E108180062C06E /* ISParallaxLayer.m in Sources */,
 				A00246FF18D99B2100E0BE78 /* ISUtils.mm in Sources */,
+				A092F40718EF802D000A4DCF /* ISActions.m in Sources */,
+				A092F40A18EF8156000A4DCF /* ISAudio.m in Sources */,
 				A00246C518D7BE0300E0BE78 /* ViewController.m in Sources */,
 				A00246BF18D7BE0300E0BE78 /* AppDelegate.m in Sources */,
 				A00246BB18D7BE0300E0BE78 /* main.m in Sources */,
