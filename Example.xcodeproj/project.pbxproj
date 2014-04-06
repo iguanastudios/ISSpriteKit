@@ -24,6 +24,7 @@
 		A092F40718EF802D000A4DCF /* ISActions.m in Sources */ = {isa = PBXBuildFile; fileRef = A092F40618EF802D000A4DCF /* ISActions.m */; };
 		A092F40A18EF8156000A4DCF /* ISAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = A092F40918EF8156000A4DCF /* ISAudio.m */; };
 		A092F40D18F0BE64000A4DCF /* ISUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = A092F40C18F0BE64000A4DCF /* ISUtilities.m */; };
+		A092F41318F16CA7000A4DCF /* SKEmitterNode+ISEmitterExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = A092F41218F16CA7000A4DCF /* SKEmitterNode+ISEmitterExtras.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,8 @@
 		A092F40918EF8156000A4DCF /* ISAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISAudio.m; sourceTree = "<group>"; };
 		A092F40B18F0BE64000A4DCF /* ISUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISUtilities.h; sourceTree = "<group>"; };
 		A092F40C18F0BE64000A4DCF /* ISUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISUtilities.m; sourceTree = "<group>"; };
+		A092F41118F16CA7000A4DCF /* SKEmitterNode+ISEmitterExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SKEmitterNode+ISEmitterExtras.h"; sourceTree = "<group>"; };
+		A092F41218F16CA7000A4DCF /* SKEmitterNode+ISEmitterExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SKEmitterNode+ISEmitterExtras.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +151,8 @@
 				A092F40C18F0BE64000A4DCF /* ISUtilities.m */,
 				A00246FD18D99B2100E0BE78 /* ISUtils.mm */,
 				A00246FE18D99B2100E0BE78 /* ISUtils.h */,
+				A092F41118F16CA7000A4DCF /* SKEmitterNode+ISEmitterExtras.h */,
+				A092F41218F16CA7000A4DCF /* SKEmitterNode+ISEmitterExtras.m */,
 			);
 			path = ISSpriteKit;
 			sourceTree = "<group>";
@@ -219,6 +224,7 @@
 			files = (
 				A00246C818D7BE0300E0BE78 /* MyScene.m in Sources */,
 				A05A093A18E108180062C06E /* ISParallaxLayer.m in Sources */,
+				A092F41318F16CA7000A4DCF /* SKEmitterNode+ISEmitterExtras.m in Sources */,
 				A092F40D18F0BE64000A4DCF /* ISUtilities.m in Sources */,
 				A00246FF18D99B2100E0BE78 /* ISUtils.mm in Sources */,
 				A092F40718EF802D000A4DCF /* ISActions.m in Sources */,

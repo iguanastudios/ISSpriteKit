@@ -15,5 +15,6 @@
 #import "ISParallaxLayer.h"
 #import "ISUtilities.h"
 #import "ISUtils.h"
+#import "SKEmitterNode+ISEmitterExtras.h"
 
 #endif
