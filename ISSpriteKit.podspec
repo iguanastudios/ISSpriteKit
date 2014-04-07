@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'ISSpriteKit'
-  spec.version      = '0.2.0'
+  spec.version      = '0.3.0'
   spec.license      = 'MIT'
   spec.summary      = 'Sprite Kit helpers, extensions and utilities.'
   spec.homepage     = 'https://github.com/iguanastudios/ISSpriteKit'

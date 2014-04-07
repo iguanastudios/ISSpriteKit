@@ -7,7 +7,7 @@
 //
 
 #import "MyScene.h"
-#import "ISSpriteKit.h"
+#import "ISParallaxLayer.h"
 
 @interface MyScene ()
 @property (strong, nonatomic) ISParallaxNode *parallaxNodeUpDirection;
